@@ -1,5 +1,5 @@
 # shodan-minecraft-server-finder
-A Winforms application for easily finding and importing minecraft servers from Shodan.io
+A Winforms application for easily finding and importing Minecraft servers from Shodan.io
 
 ## Will require a premium shodan API key!
 
