@@ -12,6 +12,7 @@ Finding Minecraft servers based on simple filters
 - Version
 - Location
 - Player amount  
+- Modded server filtering
 
 Exporting these results directly to your server list
 Getting information on the servers based easily
