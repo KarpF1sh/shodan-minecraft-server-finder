@@ -60,10 +60,11 @@ namespace minecraft_tool_standalone.FileHandler
                     // Delete the old server list file and bakcup
                     File.Delete(datFileOriginal);
                     File.Delete(datFileBackupMinecraft);
-                } catch { }
+                } catch (Exception ex){ Console.WriteLine("file error: " + ex);  }
 
                 // Copy the backed up old server list file back
                 File.Copy(datFileBackup, datFileOriginal, true);
+                File.Copy(datFileBackup, datFileBackupMinecraft, true);
 
                 // Delete mctool backup only if wanted
                 //File.Delete(datFileBackup);
@@ -73,10 +74,12 @@ namespace minecraft_tool_standalone.FileHandler
         public static void WriteFile(NbtFile file)
         {
             // Delete the old server list file and bakcup
-            File.Delete(datFileOriginal);
             File.Delete(datFileBackupMinecraft);
+            File.Delete(datFileOriginal);
 
+            // Save new server list
             file.SaveToFile(datFileOriginal, NbtCompression.None);
+            file.SaveToFile(datFileBackupMinecraft, NbtCompression.None);
         }
     }
 }

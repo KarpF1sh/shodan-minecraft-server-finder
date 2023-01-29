@@ -33,7 +33,7 @@
             this.portCheck = new System.Windows.Forms.CheckBox();
             this.descCheck = new System.Windows.Forms.CheckBox();
             this.onlineCheck = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ExportButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lineNumberCheck = new System.Windows.Forms.CheckBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -69,12 +69,12 @@
             this.onlineCheck.UseVisualStyleBackColor = true;
             this.onlineCheck.CheckedChanged += new System.EventHandler(this.onlineCheck_CheckedChanged);
             // 
-            // button1
+            // ExportButton
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.ExportButton, "ExportButton");
+            this.ExportButton.Name = "ExportButton";
+            this.ExportButton.UseVisualStyleBackColor = true;
+            this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
             // 
             // label1
             // 
@@ -113,7 +113,7 @@
             this.Controls.Add(this.previewText);
             this.Controls.Add(this.lineNumberCheck);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ExportButton);
             this.Controls.Add(this.onlineCheck);
             this.Controls.Add(this.descCheck);
             this.Controls.Add(this.portCheck);
@@ -133,7 +133,7 @@
         private System.Windows.Forms.CheckBox portCheck;
         private System.Windows.Forms.CheckBox descCheck;
         private System.Windows.Forms.CheckBox onlineCheck;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ExportButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox lineNumberCheck;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;

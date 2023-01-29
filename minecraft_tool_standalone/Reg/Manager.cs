@@ -48,7 +48,7 @@ namespace minecraft_tool_standalone.Reg
                 }
             }
             else
-            { 
+            {
                 // just in case
                 CreateRegistryKey();
                 return String.Empty;
@@ -77,8 +77,10 @@ namespace minecraft_tool_standalone.Reg
                 // Close key access
                 Key.Close();
             }
-            else { // just in case
-                   CreateRegistryKey(); }
+            else
+            { // just in case
+                CreateRegistryKey();
+            }
         }
     }
 }

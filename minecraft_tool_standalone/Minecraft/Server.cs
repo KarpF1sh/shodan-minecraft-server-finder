@@ -8,22 +8,24 @@ namespace minecraft_tool_standalone.Minecraft
 {
     public class Server
     {
-        public Server(string ip, string port, string version, string description, string online, string max)
+        public Server(string ip, string port, string version, string desc, string online, string max, bool modded)
         {
             this.Ip = ip;
             this.Port = port;
             this.Version = version;
-            this.Description = description;
-            this.OnlineCount = online;
-            this.MaxPlayers = max;
+            this.Desc = desc;
+            this.Online = online;
+            this.Max = max;
+            this.Modded = modded;
         }
 
         public string Ip { get; set; }
         public string Port { get; set; }
         public string Version { get; set; }
-        public string Description { get; set; }
-        public string OnlineCount { get; set; }
-        public string MaxPlayers { get; set; }
+        public string Desc { get; set; }
+        public string Online { get; set; }
+        public string Max { get; set; }
+        public bool Modded { get; set; }
         
     }
 }

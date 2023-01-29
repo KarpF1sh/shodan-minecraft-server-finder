@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -123,10 +63,14 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ipCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 54</value>
+    <value>14, 62</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ipCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="ipCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 17</value>
+    <value>41, 19</value>
   </data>
   <data name="ipCheck.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -138,7 +82,7 @@
     <value>ipCheck</value>
   </data>
   <data name="&gt;&gt;ipCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ipCheck.Parent" xml:space="preserve">
     <value>$this</value>
@@ -153,10 +97,13 @@
     <value>False</value>
   </data>
   <data name="portCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 77</value>
+    <value>14, 89</value>
+  </data>
+  <data name="portCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="portCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 17</value>
+    <value>53, 19</value>
   </data>
   <data name="portCheck.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -168,7 +115,7 @@
     <value>portCheck</value>
   </data>
   <data name="&gt;&gt;portCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;portCheck.Parent" xml:space="preserve">
     <value>$this</value>
@@ -180,10 +127,13 @@
     <value>True</value>
   </data>
   <data name="descCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 54</value>
+    <value>79, 62</value>
+  </data>
+  <data name="descCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="descCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 17</value>
+    <value>91, 19</value>
   </data>
   <data name="descCheck.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -195,7 +145,7 @@
     <value>descCheck</value>
   </data>
   <data name="&gt;&gt;descCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;descCheck.Parent" xml:space="preserve">
     <value>$this</value>
@@ -207,10 +157,13 @@
     <value>True</value>
   </data>
   <data name="onlineCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 77</value>
+    <value>79, 89</value>
+  </data>
+  <data name="onlineCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="onlineCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 17</value>
+    <value>95, 19</value>
   </data>
   <data name="onlineCheck.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -222,7 +175,7 @@
     <value>onlineCheck</value>
   </data>
   <data name="&gt;&gt;onlineCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;onlineCheck.Parent" xml:space="preserve">
     <value>$this</value>
@@ -230,38 +183,47 @@
   <data name="&gt;&gt;onlineCheck.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="ExportButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ExportButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>160, 54</value>
+  <data name="ExportButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 62</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 63</value>
+  <data name="ExportButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+  <data name="ExportButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>276, 73</value>
+  </data>
+  <data name="ExportButton.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
+  <data name="ExportButton.Text" xml:space="preserve">
     <value>Export</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="&gt;&gt;ExportButton.Name" xml:space="preserve">
+    <value>ExportButton</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ExportButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ExportButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ExportButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 97</value>
+    <value>14, 112</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 2</value>
+    <value>160, 2</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -270,7 +232,7 @@
     <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -282,10 +244,13 @@
     <value>True</value>
   </data>
   <data name="lineNumberCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 100</value>
+    <value>14, 115</value>
+  </data>
+  <data name="lineNumberCheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="lineNumberCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 17</value>
+    <value>98, 19</value>
   </data>
   <data name="lineNumberCheck.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -297,7 +262,7 @@
     <value>lineNumberCheck</value>
   </data>
   <data name="&gt;&gt;lineNumberCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lineNumberCheck.Parent" xml:space="preserve">
     <value>$this</value>
@@ -309,14 +274,17 @@
     <value>17, 17</value>
   </metadata>
   <data name="previewText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 29</value>
+    <value>14, 33</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="previewText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="previewText.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
   <data name="previewText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>387, 20</value>
+    <value>451, 23</value>
   </data>
   <data name="previewText.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -325,7 +293,7 @@
     <value>previewText</value>
   </data>
   <data name="&gt;&gt;previewText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;previewText.Parent" xml:space="preserve">
     <value>$this</value>
@@ -337,10 +305,13 @@
     <value>True</value>
   </data>
   <data name="PreviewLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 13</value>
+    <value>10, 15</value>
+  </data>
+  <data name="PreviewLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="PreviewLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
+    <value>51, 15</value>
   </data>
   <data name="PreviewLabel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -352,7 +323,7 @@
     <value>PreviewLabel</value>
   </data>
   <data name="&gt;&gt;PreviewLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;PreviewLabel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -364,10 +335,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>409, 127</value>
+    <value>477, 147</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 3, 4, 3</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Export</value>
@@ -376,12 +350,12 @@
     <value>saveFileDialog1</value>
   </data>
   <data name="&gt;&gt;saveFileDialog1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ExportDialog</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

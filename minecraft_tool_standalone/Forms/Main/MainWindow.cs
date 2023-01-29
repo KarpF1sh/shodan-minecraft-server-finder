@@ -9,12 +9,14 @@ using minecraft_tool_standalone.Reg;
 using System.Net.Http;
 using System.IO;
 using fNbt;
+using minecraft_tool_standalone.FileHandler;
 
 namespace minecraft_tool_standalone
 {
     public partial class MainForm : Form
     {
         private List<Server> servers = new List<Server>();
+        private bool queryModified;
         private string datFileOriginal;
         private string datFileBackup;
         public MainForm()
@@ -22,6 +24,9 @@ namespace minecraft_tool_standalone
             InitializeComponent();
 
             serverListView.MouseDoubleClick += new MouseEventHandler(serverListView_MouseDoubleClick);
+            
+            // Add event listener for keypresses
+            this.KeyDown += window_KeyDown;
             this.Load += new EventHandler(MainForm_Load);
         }
         // Double click event
@@ -33,8 +38,12 @@ namespace minecraft_tool_standalone
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // for keyboard shortcuts
+            KeyPreview = true;
+
             // Set default focus to button
             FindButton.Focus();
+
             // Show Key dialog on startup if it's not set
             if (Manager.GetRegistryKey(KeyType.APIKEY) == String.Empty)
             {
@@ -42,19 +51,17 @@ namespace minecraft_tool_standalone
                 new ApiDialog().Show();
             }
 
+            // Clean backups
+            DatFileHandler.FileBackup();
+
             // Set country picker data source
             countryBox.DataSource = CountryLister.getCountries();
         }
 
         void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Backup server list
-            
-            if (File.Exists(datFileBackup))
-            {
-                File.Copy(datFileBackup, datFileOriginal, true);
-                File.Delete(datFileBackup);
-            }
+            // Clean backups
+            DatFileHandler.FileClean();
         }
 
         private async void FindButton_Click(object sender, EventArgs e)
@@ -67,17 +74,30 @@ namespace minecraft_tool_standalone
                 onlineButton.Checked,
                 noOnlineButton.Checked,
                 // Include advanced options if checked
-                advancedToggle.Checked ? advancedBox.Text : String.Empty);
+                advancedToggle.Checked ? advancedBox.Text : String.Empty,
+                page: (int) pageSelector.Value);
 
             // Disable buttons during search
             FindButton.Enabled = false;
             mainMenuStrip.Enabled = false;
+            // Disable the page selector
+            pageSelector.Enabled = false;
+
+            // If the query has been modified
+            if (queryModified)
+            {
+                // Reset the page selector value
+                pageSelector.Value = 1;
+                queryModified = false;
+            }
+
             // Start animation
             toolStripProgressBar1.Style = ProgressBarStyle.Marquee;
+
             try
             {
                 // Create finder instance and get servers
-                servers = await ServerFinder.GetServersAsync(query);
+                servers = await ShodanQuery.SearchAsync(query);
             } catch (HttpRequestException ex)
             {
                 // Error with shodan!
@@ -91,8 +111,14 @@ namespace minecraft_tool_standalone
             // Enable buttons
             FindButton.Enabled = true;
             mainMenuStrip.Enabled = true;
+
             // Stop animation
             toolStripProgressBar1.Style = ProgressBarStyle.Continuous;
+
+            // Enable the page selector
+            pageSelector.Enabled = true;
+            pageCount.Text = ShodanQuery.pages > 100 ? ">100" : ShodanQuery.pages.ToString();
+            pageSelector.Maximum = ShodanQuery.pages == 0 ? 1 : ShodanQuery.pages;
 
             // Clear old data
             serverListView.Items.Clear();
@@ -103,16 +129,25 @@ namespace minecraft_tool_standalone
             //ListViewItem lvi = new ListViewItem(shodanResults);
             foreach (var server in servers)
             {
+
+                // If server is modded and we don't want to see it
+                if (server.Modded && showModdedButton.Checked == false)
+                {
+                    continue;
+                }
+
                 // Add data to listView
                 serverListView.Items.Add(new ListViewItem(new string[]
                 {   // Server data
-                    i.ToString(),
-                    server.Ip,
-                    server.Port,
-                    server.Version,
-                    server.Description,
-                    server.OnlineCount + "/" + server.MaxPlayers
+                        i.ToString(),
+                        server.Ip,
+                        server.Port,
+                        server.Version,
+                        server.Desc,
+                        server.Online + "/" + server.Max
                 }));
+
+                // Increment
                 i++;
             }
 
@@ -130,12 +165,18 @@ namespace minecraft_tool_standalone
         {
             // Disable other button if checked
             noOnlineButton.Enabled = !onlineButton.Checked;
+
+            // Inform changes
+            queryModified = true;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             // Disable other button if checked
             onlineButton.Enabled = !noOnlineButton.Checked;
+
+            // Inform changes
+            queryModified = true;
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
@@ -168,58 +209,89 @@ namespace minecraft_tool_standalone
             box.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void importButton_Click(object sender, EventArgs e)
         {
-
-            // Get path string from registry
-            string path = Manager.GetRegistryKey(KeyType.GAMEPATH);
-
             // If not assigned show dialog
-            if (path == String.Empty)
+            if (Manager.GetRegistryKey(KeyType.GAMEPATH) == String.Empty)
             {
                 // Show game folder dialog
                 new SelectGameDialog().Show();
             }
 
-            if (Manager.GetRegistryKey(KeyType.GAMEPATH) != String.Empty)
+            try
             {
-                // Backup server list
-                datFileOriginal = path + "\\servers.dat";
-                datFileBackup = path + "\\servers.dat.mctool";
+                // New list and compound for servers
+                NbtCompound compound = new NbtCompound("");
+                NbtList serverList = new NbtList("servers");
 
-                if (File.Exists(datFileOriginal))
+                // Bad iterator int
+                int i = 1;
+
+                // Loop through found servers
+                foreach (Server server in servers)
                 {
-                    File.Copy(datFileOriginal, datFileBackup, true);
-                }
-
-                try
-                {
-                    // New list and compund for servers
-                    var compound = new NbtCompound("");
-                    var serverList = new NbtList("servers");
-
-                    // Bad iterator int
-                    int i = 0;
-
-                    // Loop through found servers
-                    foreach (Server server in servers)
+                    // If server is modded and we don't want to see it
+                    if (server.Modded && showModdedButton.Checked == false)
                     {
-                        serverList.Add(new NbtCompound() {
-                            new NbtString("ip", server.Ip),
-                                new NbtString("name", "McTool IP: " + i.ToString())});
-                        i++;
+                        continue;
                     }
 
-                    // Add servers to minecraft
-                    compound.Add(serverList);
-
-                    // Save file
-                    var serverFile = new NbtFile(compound);
-                    serverFile.SaveToFile(datFileOriginal, NbtCompression.None);
+                    // Create new nbt compound to hold the server info
+                    serverList.Add(new NbtCompound() {
+                            new NbtString("ip", server.Ip),
+                                new NbtString("name", "McTool IP: " + i.ToString())});
+                    i++;
                 }
-                catch (Exception ex)
+
+                // Add servers to final compound
+                compound.Add(serverList);
+
+                // Save file
+                NbtFile serverFile = new NbtFile(compound);
+                DatFileHandler.WriteFile(serverFile);
+
+                //serverFile.SaveToFile(datFileOriginal, NbtCompression.None);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error importing server list");
+            }
+        }
+
+
+        private void window_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Search on enter
+            if (e.Modifiers == Keys.None && e.KeyCode == Keys.Enter)
+            {
+                FindButton_Click(sender, e);
+            }
+
+            // Shift + enter for import
+            if (e.Shift && e.KeyCode == Keys.Enter)
+            {
+                if (importToMcButton.Enabled)
                 {
-                    MessageBox.Show(ex.Message, "Error importing server list");
+                    importButton_Click(sender, e);
+                }
+            }
+
+            // Control + e for export
+            if (e.Control && e.KeyCode == Keys.E)
+            {
+                if (exportToolStripMenuItem.Enabled)
+                {
+                    exportToolStripMenuItem_Click(sender, e);
+                }
+            }
+
+            // Control + shift + r for restore
+            // Ooh secret :O
+            if (e.Control && e.Control && e.KeyCode == Keys.R)
+            {
+                if (exportToolStripMenuItem.Enabled)
+                {
+                    DatFileHandler.FileClean();
                 }
             }
         }
@@ -228,6 +300,34 @@ namespace minecraft_tool_standalone
         {
             // Show game path selector
             new SelectGameDialog().Show();
+        }
+
+        private void showModdedButton_CheckedChanged(object sender, EventArgs e)
+        {
+            // Inform changes
+            queryModified = true;
+        }
+
+        private void countryBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Inform changes
+            queryModified = true;
+        }
+
+        private void advancedBox_TextChanged(object sender, EventArgs e)
+        {
+            // Inform changes
+            queryModified = true;
+        }
+
+        private void versionBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Inform changes
+            queryModified = true;
+        }
+
+        private void testButton_Click(object sender, EventArgs e)
+        {
         }
     }
 }
